@@ -1,10 +1,16 @@
 import express from "express";
 import path from "path";
+import cors from "cors";
 import { fileURLToPath } from "url";
 import { backendHandler } from "../api/backend.js";
 import { produktHandler } from '../api/produkt_api.js';
 import { stockHandler } from '../api/stocks.js';
 
+app.use(cors({
+  origin: 'https://rema1000-clone-jazz.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

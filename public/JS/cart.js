@@ -36,6 +36,7 @@ function renderCart() {
     });
     cartList.appendChild(div);
   });
+  renderTotalPrice(cart);
 }
 
 function renderTotalPrice(cart) {
@@ -52,7 +53,6 @@ function renderTotalPrice(cart) {
   <button id="checkout-btn">Checkout</button>
   `;
   document.getElementById("checkout-btn").addEventListener("click", checkout);
-  renderTotalPrice(JSON.parse(localStorage.getItem("cart")) || []);
 }
 
 function increase(productId) {
@@ -122,6 +122,5 @@ async function checkout() {
 // Call renderCart on page load
 window.addEventListener(
   "DOMContentLoaded",
-  renderCart(),
-  renderTotalPrice(JSON.parse(localStorage.getItem("cart")) || [])
+  renderCart()
 );

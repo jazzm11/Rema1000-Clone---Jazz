@@ -16,7 +16,11 @@ app.use(cors({
   origin: function(origin, callback) {
     // allow requests with no origin (like mobile apps, curl, etc.)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+    // Allow main and preview Vercel deployments
+    if (
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/rema1000-clone-jazz.*\.vercel\.app$/.test(origin)
+    ) {
       return callback(null, true);
     } else {
       return callback(new Error('Not allowed by CORS'));

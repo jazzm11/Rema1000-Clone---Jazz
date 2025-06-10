@@ -6,14 +6,14 @@ import { backendHandler } from "../api/backend.js";
 import { produktHandler } from '../api/produkt_api.js';
 import { stockHandler } from '../api/stocks.js';
 
+const app = express();
+
 app.use(cors({
   origin: 'https://rema1000-clone-jazz.vercel.app'
 }));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const app = express();
 
 app.use(express.json());
 

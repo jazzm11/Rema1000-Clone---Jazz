@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     //      return;
     //    }
 
-    const respons = await fetch("http://localhost:3000/api/produkter");
+    const respons = await fetch("https://rema1000-clone-jazz.onrender.com/api/produkter");
     if (!respons.ok) {
       throw new Error("Network response was not ok");
     }

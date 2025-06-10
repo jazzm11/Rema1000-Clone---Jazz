@@ -99,7 +99,7 @@ async function checkout() {
   }
 
   // Send cart to backend to update stock
-  const response = await fetch("http://localhost:3000/api/checkout", {
+  const response = await fetch("https://rema1000-clone-jazz.onrender.com/api/checkout", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ cart }),

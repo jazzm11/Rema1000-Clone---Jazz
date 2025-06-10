@@ -7,7 +7,7 @@ async function loggInnBruker() {
   liste = 0;
 
   try {
-    const response = await fetch("http://localhost:3000/api/backend", {
+    const response = await fetch("https://rema1000-clone-jazz.onrender.com7api/backend", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

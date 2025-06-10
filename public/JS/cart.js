@@ -121,8 +121,7 @@ async function checkout() {
 // Call renderCart on page load
 window.addEventListener(
   "DOMContentLoaded",
-  () => {
-    renderCart();
-    renderTotalPrice(JSON.parse(localStorage.getItem("cart")) || []);
-  }
+  renderCart(),
+    renderTotalPrice(JSON.parse(localStorage.getItem("cart")) || [])
+
 );

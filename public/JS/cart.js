@@ -47,7 +47,7 @@ function renderTotalPrice(cart) {
     document.body.appendChild(totalDiv);
   }
   totalDiv.innerHTML = `
-  <h3>Total: ${parseInt(total)} kr</h3>
+  <h3>Total: ${total} kr</h3>
   <p>Items in cart: ${cart.reduce((sum, item) => sum + item.quantity, 0)}</p>
   <button id="checkout-btn">Checkout</button>
   `;

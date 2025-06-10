@@ -39,7 +39,7 @@ function renderCart() {
 }
 
 function renderTotalPrice(cart) {
-  const total = cart.reduce((sum, item) => sum + (item.Pris * item.quantity), 0);
+  const total = cart.reduce((sum, item) => sum + item.Pris * item.quantity, 0);
   let totalDiv = document.getElementById("cart-total");
   if (!totalDiv) {
     totalDiv = document.createElement("div");
@@ -47,11 +47,12 @@ function renderTotalPrice(cart) {
     document.body.appendChild(totalDiv);
   }
   totalDiv.innerHTML = `
-  <h3>Total: ${total} kr</h3>
-  <p>Items in cart: ${cart.reduce((sum, item) => sum + item.quantity, 0)}</p>
+  <h3>Total: ${parseInt(total)} kr</h3>
+  <p>Items in cart: ${item.quantity}</p>
   <button id="checkout-btn">Checkout</button>
   `;
   document.getElementById("checkout-btn").addEventListener("click", checkout);
+  renderTotalPrice(JSON.parse(localStorage.getItem("cart")) || []);
 }
 
 function increase(productId) {
@@ -99,11 +100,14 @@ async function checkout() {
   }
 
   // Send cart to backend to update stock
-  const response = await fetch("https://rema1000-clone-jazz.onrender.com/api/checkout", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ cart }),
-  });
+  const response = await fetch(
+    "https://rema1000-clone-jazz.onrender.com/api/checkout",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart }),
+    }
+  );
 
   const result = await response.json();
   if (result.success) {
@@ -115,9 +119,9 @@ async function checkout() {
   }
 }
 
-
 // Call renderCart on page load
-window.addEventListener("DOMContentLoaded", 
-  renderCart(), 
+window.addEventListener(
+  "DOMContentLoaded",
+  renderCart(),
   renderTotalPrice(JSON.parse(localStorage.getItem("cart")) || [])
 );
